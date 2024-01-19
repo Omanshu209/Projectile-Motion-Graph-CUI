@@ -158,6 +158,7 @@ public class projectilePattern
 {
 	private double u, angle, g, a, b, radians;
 	private int y_coordinate, horizontal_range, max_height;
+	private static final String RED = "\u001B[31m", GREEN = "\u001B[32m", RESET = "\u001B[0m";
 	
 	projectilePattern(double u_vel, double angle_deg, double acc_g)
 	{
@@ -199,11 +200,15 @@ public class projectilePattern
 	{
 		System.out.println(
 		"-------------------------" + "\n" + 
+		RED + 
 		"Maximum Height : " + get_maximum_height(u, g) + " m" + "\n" + 
 		"Horizontal Range : " + get_horizontal_range(u, g) + " m" + "\n" + 
 		"Time Of Flight : " + get_time_of_flight(u, g) + " s" + "\n" + 
+		RESET + 
 		"-------------------------"
 		);
+		
+		System.out.print(GREEN);
 		
 		for(int i = max_height ; i >= 0 ; i--)
 		{
@@ -219,6 +224,8 @@ public class projectilePattern
 			}
 			System.out.println();
 		}
+		
+		System.out.print(RESET);
 	}
 }
 
@@ -241,5 +248,7 @@ class main_class
 		
 		projectilePattern projectile_pattern = new projectilePattern(u, angle, g);
 		projectile_pattern.print_projectile();
+		
+		System.out.println("-------------------------");
 	}
 }
